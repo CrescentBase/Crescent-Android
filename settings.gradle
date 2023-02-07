@@ -1,0 +1,3 @@
+rootProject.name = "Crescent-Android"
+include ':app'
+include ':sdk'
