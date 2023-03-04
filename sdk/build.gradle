@@ -12,6 +12,8 @@ android {
         versionCode 1
         versionName "1.0"
 
+        multiDexEnabled true
+
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -19,6 +21,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'VERSION_NAME', "\"" + "1.0.0" + "\""
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'VERSION_NAME', "\"" + "1.0.0" + "\""
         }
     }
     compileOptions {
@@ -30,11 +39,22 @@ android {
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
+//    implementation "org.mozilla.geckoview:geckoview-nightly:$VERSION@aar"
+//    implementation "org.mozilla.geckoview:geckoview:100.0.20220425210429@aar"
+
+//    implementation "org.mozilla.geckoview:geckoview:100.0.20220425210429"
+//    implementation files('libs/geckoview.aar')
+//    implementation files('libs/geckoview.aar')
+//    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    implementation project(':sdk')
+//    implementation project(path: ':com.just.agentweb-core')
+//    implementation 'com.github.Justson.AgentWeb:com.just.agentweb-core:v5.0.6-androidx'
 }
 
 task copySdk(type: Copy) {
     dependsOn assemble
     from ('build/outputs/aar');
     into('../app/libs')
-    include ('crescent-sdk.aar')
+    include (project.name + '-release.aar')
+    rename project.name + '-release.aar', 'crescent-sdk.aar'
 }

@@ -33,14 +33,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 CrescentSdk.getInstance().init(config);
                 break;
             case R.id.loginBtn:
-                CrescentSdk.getInstance().login(new LoginCallback() {
+                CrescentSdk.getInstance().login(this, new LoginCallback() {
                     @Override
-                    public void onSuccess() {
+                    public void onLoginSuccess() {
 
                     }
 
                     @Override
-                    public void onFail() {
+                    public void onLoginFail() {
                         Log.d(TAG, "login onFail");
                     }
                 });
@@ -52,12 +52,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 TransactionInfo info = new TransactionInfo(null, null, null, null);
                 CrescentSdk.getInstance().sendTransaction(info, new SendTransactionCallback() {
                     @Override
-                    public void onSuccess() {
+                    public void onSendSuccess() {
 
                     }
 
                     @Override
-                    public void onFail() {
+                    public void onSendFail() {
                         Log.d(TAG, "sendTransaction onFail");
                     }
                 });

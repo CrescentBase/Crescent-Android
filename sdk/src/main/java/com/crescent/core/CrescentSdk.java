@@ -1,5 +1,8 @@
 package com.crescent.core;
 
+import android.content.Context;
+import android.content.Intent;
+
 public class CrescentSdk {
     private static final CrescentSdk mInstance = new CrescentSdk();
     private CrescentConfigure mConfigure;
@@ -18,11 +21,15 @@ public class CrescentSdk {
         return false;
     }
 
-    public void login(LoginCallback loginCallback) {
+    public void login(Context context, LoginCallback loginCallback) {
         mLoginCallback = loginCallback;
         if (loginCallback != null) {
-            loginCallback.onFail();
+            loginCallback.onLoginFail();
         }
+
+        Intent intent = new Intent();
+        intent.setClassName(context.getPackageName(), "com.crescent.core.CrescentActivity");
+        context.startActivity(intent);
     }
 
     public void logout() {
@@ -32,7 +39,7 @@ public class CrescentSdk {
     public void sendTransaction(TransactionInfo info, SendTransactionCallback sendTransactionCallback) {
         mSendTransactionCallback = sendTransactionCallback;
         if (sendTransactionCallback != null) {
-            sendTransactionCallback.onFail();;
+            sendTransactionCallback.onSendFail();;
         }
     }
 
