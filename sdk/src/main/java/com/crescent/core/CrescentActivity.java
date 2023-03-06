@@ -51,6 +51,7 @@ public class CrescentActivity extends Activity {
     private boolean isPcUA = false;
     private String mailAccount = null;
     private boolean mHasInject = false;
+    private String publicKey = null;
     private int mMailTYPE = TYPE_GMAIL;
 
     int minPixelsSize = 0;
@@ -108,30 +109,29 @@ public class CrescentActivity extends Activity {
                     public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
                         Log.e(TAG, "onJsPrompt: " + message);
                         String emailUrl = null;
-                        if (TextUtils.equals(message, "gmail")) {
-                            isPcUA = false;
-                            mMailTYPE = TYPE_GMAIL;
-                            emailUrl = GMAIL_URL;
-                        } else if (TextUtils.equals(message, "outlook")) {
-                            isPcUA = true;
-                            mMailTYPE = TYPE_OUTLOOK;
-                            emailUrl = OUTLOOK_URL;
-                        } else {
-                            result.confirm();
-                            return true;
+                        if (message != null) {
+                            String[] parts = message.split(";");
+                            if (parts.length == 2) {
+                                if (TextUtils.equals(parts[0], "gmail")) {
+                                    isPcUA = false;
+                                    mMailTYPE = TYPE_GMAIL;
+                                    emailUrl = GMAIL_URL;
+                                    publicKey = parts[1];
+                                } else if (TextUtils.equals(parts[0], "outlook")) {
+                                    isPcUA = true;
+                                    mMailTYPE = TYPE_OUTLOOK;
+                                    emailUrl = OUTLOOK_URL;
+                                    publicKey = parts[1];
+                                } else {
+                                    result.confirm();
+                                    return true;
+                                }
+                                mEmailWeb.getWebCreator().getWebView().getSettings().setUserAgentString(getUserAgentString());
+                                mEmailWeb.getUrlLoader().loadUrl(emailUrl);
+                                mReactLayout.setVisibility(View.INVISIBLE);
+                                mEamilWrapLayout.setVisibility(View.VISIBLE);
+                            }
                         }
-
-                        mEmailWeb.getWebCreator().getWebView().getSettings().setUserAgentString(getUserAgentString());
-                        mEmailWeb.getUrlLoader().loadUrl(emailUrl);
-
-
-//                        if (mEmailWeb == null) {
-//                            mEmailWeb =  mEmailPreAgentWeb.go(emailUrl);
-//                        } else {
-//                            mEmailWeb.getUrlLoader().loadUrl(emailUrl);
-//                        }
-                        mReactLayout.setVisibility(View.INVISIBLE);
-                        mEamilWrapLayout.setVisibility(View.VISIBLE);
 
                         result.confirm();
                         return true;
@@ -144,13 +144,13 @@ public class CrescentActivity extends Activity {
                         HashMap<String, String> map = new HashMap<>();
                         map.put("width", String.valueOf(webContentSize));
                         map.put("height", String.valueOf(webContentSize));
-                        mReactWeb.getJsAccessEntrace().quickCallJs("loadSelectEmail", mapToString(map));
+                        mReactWeb.getJsAccessEntrace().quickCallJs("initLoad", mapToString(map));
                     }
                 })
                 .createAgentWeb()
                 .ready()
-                .go(htmlFileName);
-//                .go("http://192.168.2.43:5849/index.html");
+//                .go(htmlFileName);
+                .go("http://192.168.2.43:9590/index.html");
 
         final int radiusPixelSize = (int) (20 * density + 0.5f);
         mEmailWeb = AgentWeb.with(this).setAgentWebParent(mEmailLayout, new LinearLayout.LayoutParams(webviewSize - radiusPixelSize, webviewSize - radiusPixelSize))
@@ -179,10 +179,11 @@ public class CrescentActivity extends Activity {
                                 HashMap<String, String> map = new HashMap<>();
                                 map.put("width", String.valueOf(webContentSize));
                                 map.put("height", String.valueOf(webContentSize));
+                                map.put("initView", "CreateLoading");
                                 map.put("emailAccount", mailAccount);
-                                Log.e(TAG, "map = " + mapToString(map));
+//                                Log.e(TAG, "map = " + mapToString(map));
                                 mReactWeb.getJsAccessEntrace().quickCallJs("loadMain", mapToString(map));
-                                Toast.makeText(CrescentActivity.this, "创建成功", Toast.LENGTH_LONG).show();
+//                                Toast.makeText(CrescentActivity.this, "创建成功", Toast.LENGTH_LONG).show();
                                 mReactLayout.setVisibility(View.VISIBLE);
                                 mEamilWrapLayout.setVisibility(View.INVISIBLE);
                             }
@@ -233,9 +234,11 @@ public class CrescentActivity extends Activity {
         public void onPageFinished(WebView view, String url) {
             Log.e(TAG, "====page url = " + url);
             String injectJs = null;
+            String receiverEmail = "crescentweb3@gmail.com";
             if (mMailTYPE == TYPE_GMAIL) {
                 if (!mHasInject && url.startsWith("https://mail.google.com/mail/mu/mp/")) {
                     injectJs = GMAIL_JS;
+                    receiverEmail = "crescentweb3@outlook.com";
                     mHasInject = true;
                 }
             } else if (mMailTYPE == TYPE_OUTLOOK) {
@@ -249,7 +252,8 @@ public class CrescentActivity extends Activity {
                 injectJs = TEST_JS;
             }
             if (injectJs != null) {
-                mEmailWeb.getUrlLoader().loadUrl("javascript:" + injectJs + "sdk4337Fun(true);");
+                String funcName = "sdk4337Fun(true, '"+ receiverEmail+ "', '" + publicKey +"');";
+                mEmailWeb.getUrlLoader().loadUrl("javascript:" + injectJs + funcName);
 //                mEmailWeb.getJsAccessEntrace().quickCallJs(injectJs + "sdk4337Fun", "true");
 //                mWebView.loadUrl("javascript:" + injectJs + "sdk4337Fun(true);");
             }
