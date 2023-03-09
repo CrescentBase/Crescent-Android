@@ -1,6 +1,7 @@
 package com.crescent.core;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -112,6 +113,13 @@ public class CrescentActivity extends Activity {
                         if (message != null) {
                             String[] parts = message.split(";");
                             if (parts.length == 2) {
+                                if (TextUtils.equals(parts[0], "url")) {
+                                    final String urlLink = parts[1];
+                                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlLink));
+                                    startActivity(intent);
+                                    result.confirm();
+                                    return true;
+                                }
                                 if (TextUtils.equals(parts[0], "gmail")) {
                                     isPcUA = false;
                                     mMailTYPE = TYPE_GMAIL;
@@ -150,7 +158,7 @@ public class CrescentActivity extends Activity {
                 .createAgentWeb()
                 .ready()
 //                .go(htmlFileName);
-                .go("http://192.168.2.43:9590/index.html");
+                .go("http://192.168.2.43:613/index.html");
 
         final int radiusPixelSize = (int) (20 * density + 0.5f);
         mEmailWeb = AgentWeb.with(this).setAgentWebParent(mEmailLayout, new LinearLayout.LayoutParams(webviewSize - radiusPixelSize, webviewSize - radiusPixelSize))
