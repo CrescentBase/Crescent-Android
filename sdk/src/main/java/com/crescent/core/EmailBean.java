@@ -126,8 +126,8 @@ public class EmailBean {
                     "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
                     "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
                     "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
-                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
-                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+3000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+3000)));};" +
 
                     "if (!window.hasSend4337 && document.getElementById('O365_MainLink_Me')) {" +
                     "document.getElementById('O365_MainLink_Me').click();" +

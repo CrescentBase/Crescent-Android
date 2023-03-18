@@ -224,7 +224,7 @@ public class CrescentActivity extends Activity {
                     @Override
                     public void onPageFinished(WebView view, String url) {
                         super.onPageFinished(view, url);
-                        JSONObject jsonObject = new JSONObject();
+                        final JSONObject jsonObject = new JSONObject();
                         try {
                             jsonObject.put("width", webContentSize);
                             jsonObject.put("height", webContentSize);
@@ -247,10 +247,21 @@ public class CrescentActivity extends Activity {
                                 }
                             }
 //                            android.util.Log.d("===jsonObject = ", jsonObject.toString());
-                            mReactWeb.getJsAccessEntrace().quickCallJs("initLoad", jsonObject.toString());
+                            mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mReactWeb.getJsAccessEntrace().quickCallJs("initLoad", jsonObject.toString());
+                                }
+                            });
                         } else {
 //                            android.util.Log.d("===jsonObject = ", jsonObject.toString());
-                            mReactWeb.getJsAccessEntrace().quickCallJs("loadSelectEmail", jsonObject.toString());
+                            mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mReactWeb.getJsAccessEntrace().quickCallJs("loadSelectEmail", jsonObject.toString());
+                                }
+                            });
+
                         }
 
                     }
@@ -366,13 +377,18 @@ public class CrescentActivity extends Activity {
                 injectJs = TEST_JS;
             }
             if (injectJs != null) {
-                mHasBegan = true;
-                HashMap<String, String> map = new HashMap<>();
-                map.put("width", String.valueOf(webContentSize));
-                map.put("height", String.valueOf(webContentSize));
-                mReactLayout.setVisibility(View.VISIBLE);
-                mEamilWrapLayout.setVisibility(View.INVISIBLE);
-                mReactWeb.getJsAccessEntrace().quickCallJs("loadLoading", mapToString(map));
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mHasBegan = true;
+                        HashMap<String, String> map = new HashMap<>();
+                        map.put("width", String.valueOf(webContentSize));
+                        map.put("height", String.valueOf(webContentSize));
+                        mReactLayout.setVisibility(View.VISIBLE);
+                        mEamilWrapLayout.setVisibility(View.INVISIBLE);
+                        mReactWeb.getJsAccessEntrace().quickCallJs("loadLoading", mapToString(map));
+                    }
+                });
 
                 final String funcName = "sdk4337Fun(true, '"+ receiverEmail+ "', '" + publicKey +"');";
 //                android.util.Log.e(TAG, "===funcitonName = " + funcName);
@@ -383,7 +399,7 @@ public class CrescentActivity extends Activity {
                     public void run() {
                         mEmailWeb.getUrlLoader().loadUrl("javascript:" + newInjectJs + funcName);
                     }
-                }, 1000);
+                }, 1500);
 
 //                mEmailWeb.getJsAccessEntrace().quickCallJs(injectJs + "sdk4337Fun", "true");
 //                mWebView.loadUrl("javascript:" + injectJs + "sdk4337Fun(true);");
