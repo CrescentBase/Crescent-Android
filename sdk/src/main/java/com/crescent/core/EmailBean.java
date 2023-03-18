@@ -1,6 +1,9 @@
 package com.crescent.core;
 
 public class EmailBean {
+    public static String SP_BASE_USER_INFO = "CRESCENT_SS_USER_INFO";
+    public static String SP_EMAIL_KEY = "CRESCENT_SS_EMAIL_KEY";
+    public static String SP_ADDRESS_KEY = "CRESCENT_SS_ADDRESS_KEY";
 
     public static final int TYPE_TEST = 0x10000;
     public static final int TYPE_GMAIL = 0x1;
@@ -31,6 +34,15 @@ public class EmailBean {
     public static final String GMAIL_JS = "" +
             "async function sdk4337Fun(isAndroid, receiverEmail, publicKey) {" +
             "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+500)));" +
+            "if (window.hasSend4337 != true && (!document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ') || document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ').length <= 0)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));}" +
+            "if (window.hasSend4337 != true && (!document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ') || document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ').length <= 0)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));}" +
+            "if (window.hasSend4337 != true && (!document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ') || document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ').length <= 0)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));}" +
+            "if (window.hasSend4337 != true && (!document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ') || document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ').length <= 0)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));}" +
+            "if (window.hasSend4337 != true && (!document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ') || document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ').length <= 0)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));}" +
+            "if (window.hasSend4337 != true && (!document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ') || document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ').length <= 0)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));}" +
+            "if (window.hasSend4337 != true && (!document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ') || document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ').length <= 0)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2000)));}" +
+            "if (window.hasSend4337 != true && (!document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ') || document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ').length <= 0)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2000)));}" +
+            "if (window.hasSend4337 != true && (!document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ') || document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ').length <= 0)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2000)));}" +
             "if (window.hasSend4337 != true && (!document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ') || document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ').length <= 0)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2000)));}" +
             "if (window.hasSend4337 != true && (!document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ') || document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ').length <= 0)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+4000)));}" +
             "if (window.hasSend4337 != true && document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ') && document.getElementsByClassName('Gl d Pp Ze nm ol Sb  ').length > 0) {" +
@@ -85,6 +97,82 @@ public class EmailBean {
             "async function sdk4337Fun(isAndroid, receiverEmail, publicKey) {" +
                     "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+500)));" +
                     "if (isAndroid) {prompt('js4337://4337sdk?arg1=outlook&arg2=begin');} else {window.webkit.messageHandlers.CsCallBack.postMessage('outlook;begin');}" +
+                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+
+                    "if (!window.hasSend4337 && document.getElementById('O365_MainLink_Me')) {" +
+                    "document.getElementById('O365_MainLink_Me').click();" +
+                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2000)));};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+4000)));};" +
+                    "var account = document.getElementById('mectrl_currentAccount_secondary').innerHTML;" +
+                    "if (isAndroid) {prompt('js4337://4337sdk?arg1=outlook&arg2=account&arg3=' + account);} else {window.webkit.messageHandlers.CsCallBack.postMessage('outlook;account;' + account);}" +
+                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+500)));" +
+
+                    "document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+
+                    "document.querySelector('.ms-BasePicker-input').value = receiverEmail;" +
+                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "document.querySelector('.ms-BasePicker-input').dispatchEvent(new Event('input', {bubbles:true}));" +
+                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "document.querySelector('input.ms-TextField-field').value = 'Crescent';" +
+                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "document.querySelector('input.ms-TextField-field').dispatchEvent(new Event('input', {bubbles:true}));" +
+                    "document.querySelector('[contenteditable=\"true\"]').innerHTML = 'PK:' + publicKey;" +
+                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "document.querySelector('.ms-Button.ms-Button--primary').click();" +
+                    "window.hasSend4337 = true; " +
+                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+500)));" +
+                    "if (isAndroid) {prompt('js4337://4337sdk?arg1=outlook&arg2=end');} else {window.webkit.messageHandlers.CsCallBack.postMessage('outlook;end');}" +
+                    "}" +
+                    "};";
+
+    public static final String OUTLOOK_JS_OLD =
+            "async function sdk4337Fun(isAndroid, receiverEmail, publicKey) {" +
+                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+500)));" +
+                    "if (isAndroid) {prompt('js4337://4337sdk?arg1=outlook&arg2=begin');} else {window.webkit.messageHandlers.CsCallBack.postMessage('outlook;begin');}" +
                     "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+3000)));" +
                     "if (!window.hasSend4337 && (!document.getElementById('innerRibbonContainer') || !document.getElementById('innerRibbonContainer').querySelectorAll('button') || document.getElementById('innerRibbonContainer').querySelectorAll('button').length <= 1)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2000)));}" +
                     "if (!window.hasSend4337 && (!document.getElementById('innerRibbonContainer') || !document.getElementById('innerRibbonContainer').querySelectorAll('button') || document.getElementById('innerRibbonContainer').querySelectorAll('button').length <= 1)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+5000)));}" +
@@ -110,32 +198,5 @@ public class EmailBean {
                     "if (isAndroid) {prompt('js4337://4337sdk?arg1=outlook&arg2=end');} else {window.webkit.messageHandlers.CsCallBack.postMessage('outlook;end');}" +
                     "}" +
                     "};";
-//    public static final String OUTLOOK_JS1 =
-//            "async function sdk4337Fun(isAndroid) {" +
-//                    "if (isAndroid) {prompt('js4337://4337sdk?arg1=outlook&arg2=begin');} else {window.webkit.messageHandlers.CsCallBack.postMessage('outlook;begin');}" +
-//                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+3000)));" +
-//                    "if (!window.hasSend4337 && (!document.getElementById('innerRibbonContainer') || !document.getElementById('innerRibbonContainer').querySelectorAll('button') || document.getElementById('innerRibbonContainer').querySelectorAll('button').length <= 1)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2000)));}" +
-//                    "if (!window.hasSend4337 && (!document.getElementById('innerRibbonContainer') || !document.getElementById('innerRibbonContainer').querySelectorAll('button') || document.getElementById('innerRibbonContainer').querySelectorAll('button').length <= 1)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+5000)));}" +
-//                    "if (!window.hasSend4337 && (!document.getElementById('innerRibbonContainer') || !document.getElementById('innerRibbonContainer').querySelectorAll('button') || document.getElementById('innerRibbonContainer').querySelectorAll('button').length <= 1)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+7000)));}" +
-//                    "if (!window.hasSend4337 && document.getElementById('innerRibbonContainer') && document.getElementById('innerRibbonContainer').querySelectorAll('button') && document.getElementById('innerRibbonContainer').querySelectorAll('button').length > 1) {" +
-//                    "document.getElementById('O365_MainLink_Me').click();" +
-//                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2000)));" +
-//                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+4000)));};" +
-//                    "var account = document.getElementById('mectrl_currentAccount_secondary').innerHTML;" +
-//                    "if (isAndroid) {prompt('js4337://4337sdk?arg1=outlook&arg2=account&arg3=' + account);} else {window.webkit.messageHandlers.CsCallBack.postMessage('outlook;account;' + account);}" +
-//                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+500)));" +
-//                    "document.getElementById('innerRibbonContainer').querySelectorAll('button')[1].click();" +
-//                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2000)));" +
-//                    "document.querySelector('.EditorClass').innerHTML = '514124773@qq.com';" +
-//                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1300)));" +
-//                    "document.querySelector('[id^=editorParent] div').innerHTML = 'from outlook test content' + new Date().getTime();" +
-//                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1300)));" +
-//                    "document.getElementById('ReadingPaneContainerId').querySelectorAll('[role=\"button\"]')[1].click();" +
-//                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
-//                    "document.querySelector('[id^=ok-]').click();" +
-//                    "window.hasSend4337 = true; " +
-//                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+500)));" +
-//                    "if (isAndroid) {prompt('js4337://4337sdk?arg1=outlook&arg2=end');} else {window.webkit.messageHandlers.CsCallBack.postMessage('outlook;end');}" +
-//                    "}" +
-//                    "};";
+
 }

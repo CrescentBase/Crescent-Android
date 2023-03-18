@@ -49,6 +49,7 @@ import android.view.ViewParent;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
+import android.webkit.WebStorage;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -427,7 +428,8 @@ public class AgentWebUtils {
 			webView.clearHistory();
 			webView.clearFormData();
 			clearCacheFolder(new File(AgentWebConfig.getCachePath(context)), 0);
-
+			//添加这个试试
+//			WebStorage.getInstance().deleteAllData();
 		} catch (Exception ignore) {
 			//ignore.printStackTrace();
 			if (AgentWebConfig.DEBUG) {

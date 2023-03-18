@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
+import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.JsPromptResult;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -34,7 +36,7 @@ public class MailOldActivity extends Activity {
     private static final String TAG = "=====MailActivity";
     private static final boolean DEBUG = true;
     private static final boolean SHOW_DIALOG = false;
-    private static final boolean CLEAR_WEB_COOKIE = true;
+    private static final boolean CLEAR_WEB_COOKIE = false;
 
     private static final String TEST_URL = "https://www.baidu.com/";
     private static final String GMAIL_URL = "https://mail.google.com/";//"https://www.baidu.com";//
@@ -170,13 +172,60 @@ public class MailOldActivity extends Activity {
 
         mContentLayout.setLayoutParams(new LinearLayout.LayoutParams(minSize - pixelSize, minSize - pixelSize));
 
+        isPcUA = true;
+//        String chromeUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36";
+        String chromeUserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299";
 
         mWebView = findViewById(R.id.webview);
         mWebView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.getSettings().setDomStorageEnabled(true);
-        syncSetting(mWebView.getSettings());
-        syncStaticSettings(this, mWebView.getSettings());
+//        mWebView.getSettings().setDomStorageEnabled(true);
+        int a = 1;
+        mWebView.getSettings().setUserAgentString(getUserAgentString());
+
+
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            WebView.enableSlowWholeDocumentDraw();
+//        }
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            // for Android 8 and above, you need to enable cleartext traffic in your app's manifest file
+//            // to allow HTTP connections
+//            WebView.setWebContentsDebuggingEnabled(true);
+//            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
+//        }
+
+//        mWebView.setBackgroundColor(Color.TRANSPARENT);
+//        mWebView.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
+//        GradientDrawable gradientDrawable = new GradientDrawable();
+//        gradientDrawable.setShape(GradientDrawable.RECTANGLE);
+//        gradientDrawable.setCornerRadius(10f);
+//        mWebView.setBackground(gradientDrawable);
+
+//        mWebView.setWebViewClient(mInsideWebViewClient);
+
+        mWebView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onReceivedSslError(WebView view,
+                                           SslErrorHandler handler, SslError error) {
+                handler.proceed();
+            }
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                String a = view.getSettings().getUserAgentString();
+//                Log.e(TAG, "==shouldOverrideUrlLoading = " + a);
+//                view.getSettings().setUserAgentString("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36");
+                view.loadUrl(url);
+                return true;
+            }
+        });
+        mWebView.loadUrl(OUTLOOK_URL);
+        if (true) {
+            return;
+        }
+
+//        syncSetting(mWebView.getSettings());
+//        syncStaticSettings(this, mWebView.getSettings());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             WebView.enableSlowWholeDocumentDraw();
@@ -191,19 +240,19 @@ public class MailOldActivity extends Activity {
 
         mWebView.setBackgroundColor(Color.TRANSPARENT);
         mWebView.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
-        GradientDrawable gradientDrawable = new GradientDrawable();
-        gradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        gradientDrawable.setCornerRadius(10f);
-        mWebView.setBackground(gradientDrawable);
+        GradientDrawable gradientDrawable1 = new GradientDrawable();
+        gradientDrawable1.setShape(GradientDrawable.RECTANGLE);
+        gradientDrawable1.setCornerRadius(10f);
+        mWebView.setBackground(gradientDrawable1);
 //
 //
         mWebView.setWebViewClient(mInsideWebViewClient);
-        mWebView.setWebChromeClient(mWebChromeClient);
-        if (true) {
-            mWebView.loadUrl("http://192.168.2.43:5849/index.html");
-//            mWebView.loadUrl("file:///android_asset/index.html");
-            return;
-        }
+//        mWebView.setWebChromeClient(mWebChromeClient);
+//        if (true) {
+//            mWebView.loadUrl("http://192.168.2.43:5849/index.html");
+////            mWebView.loadUrl("file:///android_asset/index.html");
+//            return;
+//        }
 
 
 
@@ -225,12 +274,13 @@ public class MailOldActivity extends Activity {
             isPcUA = true;
         }
 
-//        if (isPcUA) {
-//            mWebView.getSettings().setUserAgentString(getUserAgentString());
+        isPcUA = true;
+        if (isPcUA) {
+            mWebView.getSettings().setUserAgentString(getUserAgentString());
+        }
 
-//        }
-
-        Log.e(TAG, url);
+        url = OUTLOOK_URL;
+//        Log.e(TAG, url);
         mWebView.loadUrl(url);
 //        mWebView.loadUrl("file:///android_asset/oldindex.html");
     }
@@ -243,7 +293,7 @@ public class MailOldActivity extends Activity {
                 if (uri.getAuthority().equals("4337sdk")) {
                     if (TextUtils.equals(uri.getQueryParameter("arg2"), "end")) {
                         final String mailName = uri.getQueryParameter("arg1");
-                        Log.e(TAG, "onJsPrompt end mailName = " + mailName + "; mailAccount = " + mailAccount);
+//                        Log.e(TAG, "onJsPrompt end mailName = " + mailName + "; mailAccount = " + mailAccount);
                         mHandler.post(new Runnable() {
                             @Override
                             public void run() {
@@ -255,7 +305,7 @@ public class MailOldActivity extends Activity {
                         });
 
                     } else if (TextUtils.equals(uri.getQueryParameter("arg2"), "begin")) {
-                        Log.e(TAG, "onJsPrompt begin to send");
+//                        Log.e(TAG, "onJsPrompt begin to send");
                         mHandler.post(new Runnable() {
                             @Override
                             public void run() {
@@ -292,10 +342,15 @@ public class MailOldActivity extends Activity {
 //
 //        @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            Log.e(TAG, "shouldOverrideUrlLoading url = " + url);
+            String a = view.getSettings().getUserAgentString();
+//            Log.e(TAG, "shouldOverrideUrlLoading ua = " + a);
+            view.loadUrl(url);
+
+//            Log.e(TAG, "shouldOverrideUrlLoading url = " + url);
+            return true;
 //            view.loadUrl(url);
 //            return false;
-            return super.shouldOverrideUrlLoading(view, url);
+//            return super.shouldOverrideUrlLoading(view, url);
         }
 
         @Override
@@ -308,7 +363,11 @@ public class MailOldActivity extends Activity {
 
         @Override
         public void onPageFinished(WebView view, String url) {
-            Log.e(TAG, "====page url = " + url);
+//            Log.e(TAG, "====page url = " + url);
+            if (true) {
+                super.onPageFinished(view, url);
+                return;
+            }
 //            mWebView.loadUrl("javascript:(function() {" +
 //                    "var parent = document.getElementsByTagName('head').item(0);" +
 //                    "var style = document.createElement('style');" +
