@@ -129,6 +129,21 @@ public class EmailBean {
                     "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+3000)));};" +
 
                     "if (!window.hasSend4337 && document.getElementById('O365_MainLink_Me')) {" +
+                    "if(!document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "};" +
+                    "if(!document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "};" +
+                    "if(!document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "};" +
+                    "if(!document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "};" +
                     "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
                     "document.getElementById('O365_MainLink_Me').click();" +
                     "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +

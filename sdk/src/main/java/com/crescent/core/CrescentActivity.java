@@ -62,7 +62,7 @@ public class CrescentActivity extends Activity {
     private String publicKey = null;
     private String walletKeytore = null;
     private int mMailTYPE = TYPE_GMAIL;
-    private boolean mHasBegan = false;
+    private boolean mHasGetAccount = false;
 
     int minPixelsSize = 0;
     float density = 0;
@@ -93,7 +93,7 @@ public class CrescentActivity extends Activity {
         mBaseLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!mHasBegan || walletKeytore != null) {
+                if (!mHasGetAccount || walletKeytore != null) {
                     finish();
                 }
             }
@@ -216,7 +216,7 @@ public class CrescentActivity extends Activity {
                                 mHandler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        if (!mHasBegan) {
+                                        if (!mHasInject) {
                                             mReactLayout.setVisibility(View.INVISIBLE);
                                             mEamilWrapLayout.setVisibility(View.VISIBLE);
                                         }
@@ -324,7 +324,7 @@ public class CrescentActivity extends Activity {
                             public void run() {
                                 mailAccount = uri.getQueryParameter("arg3");
 //                        android.util.Log.e(TAG, "backContnet = " + mailAccount);
-
+                                mHasGetAccount = true;
                                 HashMap<String, String> map = new HashMap<>();
                                 map.put("width", String.valueOf(webContentSize));
                                 map.put("height", String.valueOf(webContentSize));
