@@ -5,10 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
   <title>Development</title>
-
-<!--  <script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="application/javascript"></script>-->
-
-<!--  <script src="./dist/umd/index.js"></script>-->
   <script src="./index.bundle.js"></script>
 
 </head>
@@ -17,13 +13,11 @@
 <div id="parent-id" style="display: flex; position: relative">
   <div style="display: flex; position: absolute; justify-content: center" id="parent-div1"></div>
   <div style="display: flex; position: absolute; justify-content: center" id="parent-div2"></div>
-<!--  <button id="btnPay" type="button" style="display: none">Buy</button>-->
 </div>
 
 <script>
   function initLoad(params) {
     const keystoreKey = localStorage.getItem('storage_wallet_keystore');
-    console.log('===keystoreKey = ', keystoreKey);
     if (keystoreKey) {
       loadMain(params)
     } else {
@@ -103,15 +97,6 @@
     }
     let destroy = CrescentSDK.CrescentEntry(allParams);
   }
-
-  // loadSelectEmail();
- // initLoad({platform: 3});
-  // loadMain({initView: "SetPassword"});
-  // loadMain({initView: "Main"});
-  // loadMain({initView: "CreateLoading", emailAccount: 'test2023abc@outlook.com', platform: 3})
-
-  // initParams();
-  // button.addEventListener("click", func);
 </script>
 
 </body>

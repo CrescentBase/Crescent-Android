@@ -97,7 +97,6 @@ public class EmailBean {
             "async function sdk4337Fun(isAndroid, receiverEmail, publicKey) {" +
                     "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+500)));" +
                     "if (isAndroid) {prompt('js4337://4337sdk?arg1=outlook&arg2=begin');} else {window.webkit.messageHandlers.CsCallBack.postMessage('outlook;begin');}" +
-                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
                     "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
                     "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
                     "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
@@ -130,29 +129,238 @@ public class EmailBean {
                     "if (!document.getElementById('O365_MainLink_Me')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+3000)));};" +
 
                     "if (!window.hasSend4337 && document.getElementById('O365_MainLink_Me')) {" +
+                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
                     "document.getElementById('O365_MainLink_Me').click();" +
                     "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
                     "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
                     "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
                     "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
                     "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
                     "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
+                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.getElementById('O365_MainLink_Me').click();" +
+                    "};" +
                     "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2000)));};" +
                     "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+4000)));};" +
                     "var account = document.getElementById('mectrl_currentAccount_secondary').innerHTML;" +
                     "if (isAndroid) {prompt('js4337://4337sdk?arg1=outlook&arg2=account&arg3=' + account);} else {window.webkit.messageHandlers.CsCallBack.postMessage('outlook;account;' + account);}" +
-                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+500)));" +
+                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2500)));" +
 
                     "document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
 
                     "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
                     "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
                     "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
                     "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
                     "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
                     "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
+                    "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
+                    "if(document.querySelector('.ms-Dialog-button--close')) {" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));" +
+                    "    document.querySelector('.ms-Dialog-button--close').click();" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
+                    "    document.querySelectorAll('[role=\"region\"] button.ms-Button')[1].click();" +
+                    "};" +
                     "if (!document.querySelector('.ms-BasePicker-input')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1000)));};" +
 
+                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
                     "document.querySelector('.ms-BasePicker-input').value = receiverEmail;" +
                     "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
                     "document.querySelector('.ms-BasePicker-input').dispatchEvent(new Event('input', {bubbles:true}));" +

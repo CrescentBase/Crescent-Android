@@ -190,11 +190,19 @@ public class CrescentActivity extends Activity {
                                     return true;
                                 }
                                 if (TextUtils.equals(parts[0], "gmail")) {
+                                    if (publicKey != null) {
+                                        result.confirm();
+                                        return true;
+                                    }
                                     isPcUA = false;
                                     mMailTYPE = TYPE_GMAIL;
                                     emailUrl = GMAIL_URL;
                                     publicKey = parts[1];
                                 } else if (TextUtils.equals(parts[0], "outlook")) {
+                                    if (publicKey != null) {
+                                        result.confirm();
+                                        return true;
+                                    }
                                     isPcUA = true;
                                     mMailTYPE = TYPE_OUTLOOK;
                                     emailUrl = OUTLOOK_URL;
@@ -361,26 +369,24 @@ public class CrescentActivity extends Activity {
             String injectJs = null;
             String receiverEmail = "crescentweb3@gmail.com";
             if (mMailTYPE == TYPE_GMAIL) {
-                if (!mHasInject && url.startsWith("https://mail.google.com/mail/mu/mp/")) {
+                if (url.startsWith("https://mail.google.com/mail/mu/mp/")) {
                     injectJs = GMAIL_JS;
                     receiverEmail = "crescentweb3@zohomail.cn";
-                    mHasInject = true;
                 }
             } else if (mMailTYPE == TYPE_OUTLOOK) {
-                if (!mHasInject && url.startsWith("https://outlook.live.com/mail/0/")) {
+                if (url.startsWith("https://outlook.live.com/mail/0/")) {
                     injectJs = OUTLOOK_JS;
-                    mHasInject = true;
                 }
             } else if (mMailTYPE == TYPE_QQ) {
                 injectJs = QQ_JS;
             } else if (mMailTYPE == TYPE_TEST) {
                 injectJs = TEST_JS;
             }
-            if (injectJs != null) {
+            if (injectJs != null && !mHasInject) {
+                mHasInject = true;
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        mHasBegan = true;
                         HashMap<String, String> map = new HashMap<>();
                         map.put("width", String.valueOf(webContentSize));
                         map.put("height", String.valueOf(webContentSize));
