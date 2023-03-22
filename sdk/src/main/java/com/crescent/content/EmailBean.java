@@ -1,4 +1,4 @@
-package com.crescent.core;
+package com.crescent.content;
 
 public class EmailBean {
     public static String SP_BASE_USER_INFO = "CRESCENT_SS_USER_INFO";

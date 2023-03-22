@@ -1,4 +1,4 @@
-package com.crescent.core;
+package com.crescent.content;
 
 import android.app.Activity;
 import android.content.ClipData;
@@ -15,9 +15,7 @@ import android.os.Looper;
 import android.os.StrictMode;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.webkit.JsPromptResult;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
@@ -27,6 +25,11 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.crescent.core.CrescentSdk;
+import com.crescent.core.R;
+import com.crescent.core.TransactionInfo;
+import com.crescent.core.TransactionResult;
+import com.crescent.core.UserInfo;
 import com.just.agentweb.AgentWeb;
 import com.just.agentweb.WebChromeClient;
 import com.just.agentweb.WebViewClient;
@@ -37,16 +40,16 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.crescent.core.EmailBean.GMAIL_JS;
-import static com.crescent.core.EmailBean.GMAIL_URL;
-import static com.crescent.core.EmailBean.OUTLOOK_JS;
-import static com.crescent.core.EmailBean.OUTLOOK_URL;
-import static com.crescent.core.EmailBean.QQ_JS;
-import static com.crescent.core.EmailBean.TEST_JS;
-import static com.crescent.core.EmailBean.TYPE_GMAIL;
-import static com.crescent.core.EmailBean.TYPE_OUTLOOK;
-import static com.crescent.core.EmailBean.TYPE_QQ;
-import static com.crescent.core.EmailBean.TYPE_TEST;
+import static com.crescent.content.EmailBean.GMAIL_JS;
+import static com.crescent.content.EmailBean.GMAIL_URL;
+import static com.crescent.content.EmailBean.OUTLOOK_JS;
+import static com.crescent.content.EmailBean.OUTLOOK_URL;
+import static com.crescent.content.EmailBean.QQ_JS;
+import static com.crescent.content.EmailBean.TEST_JS;
+import static com.crescent.content.EmailBean.TYPE_GMAIL;
+import static com.crescent.content.EmailBean.TYPE_OUTLOOK;
+import static com.crescent.content.EmailBean.TYPE_QQ;
+import static com.crescent.content.EmailBean.TYPE_TEST;
 
 public class CrescentActivity extends Activity {
     private static final String TAG = "=====CrescentActivity";
@@ -276,8 +279,8 @@ public class CrescentActivity extends Activity {
                 })
                 .createAgentWeb()
                 .ready()
-                .go(htmlFileName);
-//                .go("http://192.168.2.43:4143/index.html");
+//                .go(htmlFileName);
+                .go("http://192.168.2.43:5918/index.html");
 
 
         final int radiusPixelSize = (int) (20 * density + 0.5f);

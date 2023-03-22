@@ -1,4 +1,4 @@
-package com.crescent.core;
+package com.crescent.content;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import com.crescent.content.CrescentActivity;
+import com.crescent.core.R;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
     public static final int TYPE_TEST = 0x10000;

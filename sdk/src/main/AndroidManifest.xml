@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application>
-        <activity android:name="com.crescent.core.CrescentActivity"
+        <activity android:name="com.crescent.content.CrescentActivity"
             android:theme="@style/actionActivity"
             android:configChanges="orientation|screenSize">
         </activity>

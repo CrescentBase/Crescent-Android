@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.crescent.content.EmailBean;
+
 public class CrescentSdk {
     private static final CrescentSdk mInstance = new CrescentSdk();
     private CrescentConfigure mConfigure;
@@ -49,7 +51,7 @@ public class CrescentSdk {
         mConnectCallback = connectCallback;
         mTx = null;
         Intent intent = new Intent();
-        intent.setClassName(context.getPackageName(), "com.crescent.core.CrescentActivity");
+        intent.setClassName(context.getPackageName(), "com.crescent.content.CrescentActivity");
         context.startActivity(intent);
     }
 
@@ -69,7 +71,7 @@ public class CrescentSdk {
         mTx = info;
         mSendTransactionCallback = sendTransactionCallback;
         Intent intent = new Intent();
-        intent.setClassName(context.getPackageName(), "com.crescent.core.CrescentActivity");
+        intent.setClassName(context.getPackageName(), "com.crescent.content.CrescentActivity");
         context.startActivity(intent);
     }
 

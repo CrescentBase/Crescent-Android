@@ -1,4 +1,4 @@
-package com.crescent.core;
+package com.crescent.content;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -16,7 +16,6 @@ import android.os.Looper;
 import android.os.StrictMode;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
@@ -29,6 +28,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.crescent.core.R;
 
 import java.lang.reflect.Method;
 

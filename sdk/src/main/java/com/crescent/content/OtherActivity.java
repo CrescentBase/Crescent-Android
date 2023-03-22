@@ -1,4 +1,4 @@
-package com.crescent.core;
+package com.crescent.content;
 
 import android.app.Activity;
 import android.os.Build;
@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.crescent.core.R;
 import com.just.agentweb.AgentWeb;
 import com.just.agentweb.AgentWebView;
 

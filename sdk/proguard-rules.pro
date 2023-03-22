@@ -24,3 +24,7 @@
     *;
 }
 -dontwarn com.just.agentweb.**
+
+-keep public class * extends android.app.Activity
+
+-keep class com.crescent.core.** { *; }
