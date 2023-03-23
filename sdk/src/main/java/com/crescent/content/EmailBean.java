@@ -9,11 +9,17 @@ public class EmailBean {
     public static final int TYPE_GMAIL = 0x1;
     public static final int TYPE_OUTLOOK = 0x2;
     public static final int TYPE_QQ = 0x3;
+    public static final int TYPE_163 = 0x4;
+    public static final int TYPE_YAHOO = 0x5;
+    public static final int TYPE_AOL = 0x6;
 
     public static final String TEST_URL = "https://www.baidu.com/";
     public static final String GMAIL_URL = "https://mail.google.com/";//"https://www.baidu.com";//
     public static final String QQ_URL = "https://mail.qq.com/";//"https://mail.qq.com/";
     public static final String OUTLOOK_URL = "https://outlook.live.com/owa/?nlp=1";
+    public static final String MAIL163_URL = "https://smart.mail.163.com/login.htm";
+    public static final String YAHOO_URL = "https://mail.yahoo.com/mb/listfolders/";
+    public static final String AOL_URL = "https://mail.aol.com/mb/listfolders/"; //?.src=ym&reason=myc"; //"https://mail.aol.com/"; //"https://login.aol.com/?src=mail";//
 
     public static final String TEST_JS_1 = "" +
             "async function sdk4337Fun() {" +
@@ -392,34 +398,215 @@ public class EmailBean {
                     "}" +
                     "};";
 
-    public static final String OUTLOOK_JS_OLD =
-            "async function sdk4337Fun(isAndroid, receiverEmail, publicKey) {" +
-                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+500)));" +
-                    "if (isAndroid) {prompt('js4337://4337sdk?arg1=outlook&arg2=begin');} else {window.webkit.messageHandlers.CsCallBack.postMessage('outlook;begin');}" +
-                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+3000)));" +
-                    "if (!window.hasSend4337 && (!document.getElementById('innerRibbonContainer') || !document.getElementById('innerRibbonContainer').querySelectorAll('button') || document.getElementById('innerRibbonContainer').querySelectorAll('button').length <= 1)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2000)));}" +
-                    "if (!window.hasSend4337 && (!document.getElementById('innerRibbonContainer') || !document.getElementById('innerRibbonContainer').querySelectorAll('button') || document.getElementById('innerRibbonContainer').querySelectorAll('button').length <= 1)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+5000)));}" +
-                    "if (!window.hasSend4337 && (!document.getElementById('innerRibbonContainer') || !document.getElementById('innerRibbonContainer').querySelectorAll('button') || document.getElementById('innerRibbonContainer').querySelectorAll('button').length <= 1)) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+7000)));}" +
-                    "if (!window.hasSend4337 && document.getElementById('innerRibbonContainer') && document.getElementById('innerRibbonContainer').querySelectorAll('button') && document.getElementById('innerRibbonContainer').querySelectorAll('button').length > 1) {" +
-                    "document.getElementById('O365_MainLink_Me').click();" +
-                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2000)));" +
-                    "if (!document.getElementById('mectrl_currentAccount_secondary')) {await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+4000)));};" +
-                    "var account = document.getElementById('mectrl_currentAccount_secondary').innerHTML;" +
-                    "if (isAndroid) {prompt('js4337://4337sdk?arg1=outlook&arg2=account&arg3=' + account);} else {window.webkit.messageHandlers.CsCallBack.postMessage('outlook;account;' + account);}" +
-                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+500)));" +
-                    "document.getElementById('innerRibbonContainer').querySelectorAll('button')[1].click();" +
-                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+2000)));" +
-                    "document.querySelector('.EditorClass').innerHTML = receiverEmail;" +
-                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+800)));" +
-                    "document.querySelector('[id^=editorParent] div').innerHTML = 'PK:' + publicKey;" +
-                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+800)));" +
-                    "document.getElementById('ReadingPaneContainerId').querySelectorAll('[role=\"button\"]')[1].click();" +
-                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+1500)));" +
-                    "document.querySelector('[id^=ok-]').click();" +
-                    "window.hasSend4337 = true; " +
-                    "await new Promise(r => setTimeout(r, Math.floor(Math.random()*500+500)));" +
-                    "if (isAndroid) {prompt('js4337://4337sdk?arg1=outlook&arg2=end');} else {window.webkit.messageHandlers.CsCallBack.postMessage('outlook;end');}" +
-                    "}" +
-                    "};";
+    public static final String MAIL163_HIDE_JS = "async function hideTopInstall() {\n" +
+            "    if (document.getElementById('topDropImg')) {\n" +
+            "      while (!document.getElementById('topDropImg')) {\n" +
+            "        await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+            "      }\n" +
+            "      document.getElementById('topDropImg').style.display = 'none';\n" +
+            "      document.querySelector('.login-agreement').style.display = 'none';\n" +
+            "      document.querySelector('.g-foot').style.display = 'none';\n" +
+            "    }\n" +
+            "  };";
+    public static final String MAIL163_JS =
+            "async function sdk4337Fun(isAndroid, receiverEmail, publicKey) {\n" +
+            "    await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+            "    if (isAndroid) {\n" +
+            "      prompt('js4337://4337sdk?arg1=mail163&arg2=begin');\n" +
+            "    } else {\n" +
+            "      window.webkit.messageHandlers.CsCallBack.postMessage('mail163;begin');\n" +
+            "    }\n" +
+            "    if (window.hasSend4337 != true) {\n" +
+            "      var indexId = isAndroid ? 3 : 2;\n" +
+            "      while (!document.querySelector('.frame-minaAccount')) {\n" +
+            "        await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+            "      }\n" +
+            "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+            "      let account = document.querySelector('.frame-minaAccount').innerHTML;\n" +
+            "      if (isAndroid) {\n" +
+            "        prompt('js4337://4337sdk?arg1=mail163&arg2=account&arg3=' + account.replace(/\\s+/g, ''));\n" +
+            "      } else {\n" +
+            "        window.webkit.messageHandlers.CsCallBack.postMessage('mail163;account;' + account.replace(/\\s+/g, ''));\n" +
+            "      }\n" +
+            "      while (!document.querySelector('#dvContainer .toolbar-optItem:nth-child(' + indexId + ') div')) {\n" +
+            "        await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+            "      }\n" +
+            "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+            "      document.querySelector('#dvContainer .toolbar-optItem:nth-child(' + indexId + ') div').click();\n" +
+            "      while (!document.querySelector('#composeTo input')) {\n" +
+            "        await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+            "      }\n" +
+            "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+            "      document.querySelector('#composeTo input').value = receiverEmail;\n" +
+            "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+            "      document.querySelector('#composeSubject input').value = 'Crescent';\n" +
+            "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+            "      document.querySelector('#composeContentArea').innerHTML = 'PK:' + publicKey;\n" +
+            "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+            "      document.querySelector('#dvMaskContainer .toolbar-colRight .toolbar-optItem:nth-child(2) div').click();\n" +
+            "      window.hasSend4337 = true;\n" +
+            "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+            "      if (isAndroid) {\n" +
+            "        prompt('js4337://4337sdk?arg1=mail163&arg2=end');\n" +
+            "      } else {\n" +
+            "        window.webkit.messageHandlers.CsCallBack.postMessage('mail163;end');\n" +
+            "      }\n" +
+            "    }\n" +
+            "  };";
 
+    public static final String YAHOO_JS_COMPOSE_OLD =
+            "async function sdk4377ClickCompose(isAndroid) {\n" +
+                    "    while (!document.querySelector('[data-test-id=\"account-name\"]')) {\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "    }\n" +
+                    "    var account = document.querySelector('[data-test-id=\"account-name\"]').title;\n" +
+                    "    if (isAndroid) {\n" +
+                    "      prompt('js4337://4337sdk?arg1=yahoo&arg2=account&arg3=' + account);\n" +
+                    "    } else {\n" +
+                    "      window.webkit.messageHandlers.CsCallBack.postMessage('yahoo;account;' + account);\n" +
+                    "    }\n" +
+                    "    while (!document.querySelector('[data-test-id=\"compose-button\"]')) {\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "    }\n" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "    document.querySelector('[data-test-id=\"compose-button\"]').click();\n" +
+                    "  };";
+
+    public static final String YAHOO_JS_OLD =
+            "async function sdk4337Fun(isAndroid, receiverEmail, publicKey) {\n" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "    if (isAndroid) {\n" +
+                    "      prompt('js4337://4337sdk?arg1=yahoo&arg2=begin');\n" +
+                    "    } else {\n" +
+                    "      window.webkit.messageHandlers.CsCallBack.postMessage('yahoo;begin');\n" +
+                    "    }\n" +
+                    "    if (window.hasSend4337 != true) {\n" +
+                    "      while (!document.getElementById('to')) {\n" +
+                    "        await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "      }\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "      document.getElementById('to').value = receiverEmail;\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "      document.getElementById('subject').value = 'Crescent';\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "      document.getElementById('editorPlainText').value = 'PK:' + publicKey;\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "      document.querySelector('.send-button').click();\n" +
+                    "      window.hasSend4337 = true;\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "      if (isAndroid) {\n" +
+                    "        prompt('js4337://4337sdk?arg1=yahoo&arg2=end');\n" +
+                    "      } else {\n" +
+                    "        window.webkit.messageHandlers.CsCallBack.postMessage('yahoo;end');\n" +
+                    "      }\n" +
+                    "    }\n" +
+                    "  };";
+
+    public static final String YAHOO_JS_GETACCOUNT =
+            "async function sdk4337GetAccount(isAndroid) {\n" +
+                    "    while (!document.querySelector('[data-test-id=\"account\"]')) {\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "    }\n" +
+                    "    var account = document.querySelector('[data-test-id=\"account\"] > li > a > div > div > div > div:nth-child(2)').innerHTML;\n" +
+                    "    if (isAndroid) {\n" +
+                    "      prompt('js4337://4337sdk?arg1=yahoo&arg2=account&arg3=' + account);\n" +
+                    "    } else {\n" +
+                    "      window.webkit.messageHandlers.CsCallBack.postMessage('yahoo;account;' + account);\n" +
+                    "    }\n" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "    document.querySelector('[data-test-id=\"INBOX\"]').click();\n" +
+                    "  };";
+
+    public static final String YAHOO_JS_CLICKCOMPOSE =
+            "async function sdk4337ClickCompose() {\n" +
+                    "    while (!document.querySelector('#top > div:nth-child(2) > div > table > tbody > tr > td > span > a')) {\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "    }\n" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "    document.querySelector('#top > div:nth-child(2) > div > table > tbody > tr > td > span > a').click();\n" +
+                    "  };";
+
+    public static final String YAHOO_JS =
+            "async function sdk4337Fun(isAndroid, receiverEmail, publicKey) {\n" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "    if (isAndroid) {\n" +
+                    "      prompt('js4337://4337sdk?arg1=yahoo&arg2=begin');\n" +
+                    "    } else {\n" +
+                    "      window.webkit.messageHandlers.CsCallBack.postMessage('yahoo;begin');\n" +
+                    "    }\n" +
+                    "    if (window.hasSend4337 != true) {\n" +
+                    "      while (!document.querySelector('#to')) {\n" +
+                    "        await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "      }\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "      document.querySelector(\"#to\").value = receiverEmail;\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "      document.querySelector(\"#subject\").value = 'Crescent';\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "      document.querySelector(\"#editorPlainText\").value = 'PK:' + publicKey;\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "      document.querySelector('#compose-form > div:nth-child(15) > table > tbody > tr > td:nth-child(3) > button').click();\n" +
+                    "      window.hasSend4337 = true;\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "      if (isAndroid) {\n" +
+                    "        prompt('js4337://4337sdk?arg1=yahoo&arg2=end');\n" +
+                    "      } else {\n" +
+                    "        window.webkit.messageHandlers.CsCallBack.postMessage('yahoo;end');\n" +
+                    "      }\n" +
+                    "    }\n" +
+                    "  }";
+
+    public static final String AOL_JS_GETACCOUNT =
+            "async function sdk4337GetAccount(isAndroid) {\n" +
+                    "    while (!document.querySelector('[data-test-id=\"account\"]')) {\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "    }\n" +
+                    "    var account = document.querySelector('[data-test-id=\"account\"] > li > a > div > div > div > div:nth-child(2)').innerHTML;\n" +
+                    "    if (isAndroid) {\n" +
+                    "      prompt('js4337://4337sdk?arg1=aol&arg2=account&arg3=' + account);\n" +
+                    "    } else {\n" +
+                    "      window.webkit.messageHandlers.CsCallBack.postMessage('aol;account;' + account);\n" +
+                    "    }\n" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "    document.querySelector('[data-test-id=\"INBOX\"]').click();\n" +
+                    "  };";
+
+    public static final String AOL_JS_CLICKCOMPOSE =
+            "async function sdk4337ClickCompose() {\n" +
+                    "    while (!document.querySelector('#top > div:nth-child(2) > div > table > tbody > tr > td > span > a')) {\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "    }\n" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "    document.querySelector('#top > div:nth-child(2) > div > table > tbody > tr > td > span > a').click();\n" +
+                    "  };";
+
+    public static final String AOL_JS =
+            "async function sdk4337Fun(isAndroid, receiverEmail, publicKey) {\n" +
+                    "    await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "    if (isAndroid) {\n" +
+                    "      prompt('js4337://4337sdk?arg1=aol&arg2=begin');\n" +
+                    "    } else {\n" +
+                    "      window.webkit.messageHandlers.CsCallBack.postMessage('aol;begin');\n" +
+                    "    }\n" +
+                    "    if (window.hasSend4337 != true) {\n" +
+                    "      while (!document.querySelector('#to')) {\n" +
+                    "        await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "      }\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "      document.querySelector(\"#to\").value = receiverEmail;\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "      document.querySelector(\"#subject\").value = 'Crescent';\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "      document.querySelector(\"#editorPlainText\").value = 'PK:' + publicKey;\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 1000)));\n" +
+                    "      document.querySelector('#compose-form > div:nth-child(15) > table > tbody > tr > td:nth-child(3) > button').click();\n" +
+                    "      window.hasSend4337 = true;\n" +
+                    "      await new Promise(r => setTimeout(r, Math.floor(Math.random() * 500 + 500)));\n" +
+                    "      if (isAndroid) {\n" +
+                    "        prompt('js4337://4337sdk?arg1=aol&arg2=end');\n" +
+                    "      } else {\n" +
+                    "        window.webkit.messageHandlers.CsCallBack.postMessage('aol;end');\n" +
+                    "      }\n" +
+                    "    }\n" +
+                    "  }";
 }

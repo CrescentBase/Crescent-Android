@@ -40,16 +40,30 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.crescent.content.EmailBean.AOL_JS;
+import static com.crescent.content.EmailBean.AOL_JS_CLICKCOMPOSE;
+import static com.crescent.content.EmailBean.AOL_JS_GETACCOUNT;
+import static com.crescent.content.EmailBean.AOL_URL;
 import static com.crescent.content.EmailBean.GMAIL_JS;
 import static com.crescent.content.EmailBean.GMAIL_URL;
+import static com.crescent.content.EmailBean.MAIL163_HIDE_JS;
+import static com.crescent.content.EmailBean.MAIL163_URL;
+import static com.crescent.content.EmailBean.MAIL163_JS;
 import static com.crescent.content.EmailBean.OUTLOOK_JS;
 import static com.crescent.content.EmailBean.OUTLOOK_URL;
 import static com.crescent.content.EmailBean.QQ_JS;
 import static com.crescent.content.EmailBean.TEST_JS;
+import static com.crescent.content.EmailBean.TYPE_163;
+import static com.crescent.content.EmailBean.TYPE_AOL;
 import static com.crescent.content.EmailBean.TYPE_GMAIL;
 import static com.crescent.content.EmailBean.TYPE_OUTLOOK;
 import static com.crescent.content.EmailBean.TYPE_QQ;
 import static com.crescent.content.EmailBean.TYPE_TEST;
+import static com.crescent.content.EmailBean.TYPE_YAHOO;
+import static com.crescent.content.EmailBean.YAHOO_JS;
+import static com.crescent.content.EmailBean.YAHOO_JS_CLICKCOMPOSE;
+import static com.crescent.content.EmailBean.YAHOO_JS_GETACCOUNT;
+import static com.crescent.content.EmailBean.YAHOO_URL;
 
 public class CrescentActivity extends Activity {
     private static final String TAG = "=====CrescentActivity";
@@ -62,6 +76,10 @@ public class CrescentActivity extends Activity {
     private boolean isPcUA = false;
     private String mailAccount = null;
     private boolean mHasInject = false;
+
+    private boolean mHasPreInject = false;
+
+    private boolean mHasPreInject2 = false;
     private String publicKey = null;
     private String walletKeytore = null;
     private int mMailTYPE = TYPE_GMAIL;
@@ -107,9 +125,9 @@ public class CrescentActivity extends Activity {
         mEamilWrapLayout = findViewById(R.id.email_wrap_layout);
         mEamilWrapLayout.setVisibility(View.INVISIBLE);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            WebView.enableSlowWholeDocumentDraw();
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            WebView.enableSlowWholeDocumentDraw();
+//        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             WebView.setWebContentsDebuggingEnabled(true);
@@ -122,7 +140,7 @@ public class CrescentActivity extends Activity {
                 .closeIndicator().setWebChromeClient(new WebChromeClient() {
                     @Override
                     public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
-//                        Log.e(TAG, "onJsPrompt: " + message);
+                        LogU.e(TAG, "onJsPrompt: " + message);
                         String emailUrl = null;
                         if (message != null) {
                             String[] parts = message.split(";", 2);
@@ -209,6 +227,30 @@ public class CrescentActivity extends Activity {
                                     isPcUA = true;
                                     mMailTYPE = TYPE_OUTLOOK;
                                     emailUrl = OUTLOOK_URL;
+                                    publicKey = parts[1];
+                                } else if (TextUtils.equals(parts[0], "mail163")) {
+                                    if (publicKey != null) {
+                                        result.confirm();
+                                        return true;
+                                    }
+                                    mMailTYPE = TYPE_163;
+                                    emailUrl = MAIL163_URL;
+                                    publicKey = parts[1];
+                                } else if (TextUtils.equals(parts[0], "yahoo")) {
+                                    if (publicKey != null) {
+                                        result.confirm();
+                                        return true;
+                                    }
+                                    mMailTYPE = TYPE_YAHOO;
+                                    emailUrl = YAHOO_URL;
+                                    publicKey = parts[1];
+                                } else if (TextUtils.equals(parts[0], "aol")) {
+                                    if (publicKey != null) {
+                                        result.confirm();
+                                        return true;
+                                    }
+                                    mMailTYPE = TYPE_AOL;
+                                    emailUrl = AOL_URL;
                                     publicKey = parts[1];
                                 } else {
                                     result.confirm();
@@ -300,7 +342,7 @@ public class CrescentActivity extends Activity {
         @Override
         public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
             Uri uri = Uri.parse(message);
-//            android.util.Log.e(TAG, "===message = " + message);
+            LogU.e(TAG, "===message = " + message);
             if (uri.getScheme().equals("js4337")) {
                 if (uri.getAuthority().equals("4337sdk")) {
                     if (TextUtils.equals(uri.getQueryParameter("arg2"), "end")) {
@@ -308,19 +350,6 @@ public class CrescentActivity extends Activity {
 //                        Log.e(TAG, "onJsPrompt end mailName = " + mailName + "; mailAccount = " + mailAccount);
 
                     } else if (TextUtils.equals(uri.getQueryParameter("arg2"), "begin")) {
-//                        Log.e(TAG, "onJsPrompt begin to send");
-//                        mHandler.post(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                mHasBegan = true;
-//                                HashMap<String, String> map = new HashMap<>();
-//                                map.put("width", String.valueOf(webContentSize));
-//                                map.put("height", String.valueOf(webContentSize));
-//                                mReactWeb.getJsAccessEntrace().quickCallJs("loadLoading", mapToString(map));
-//                                mReactLayout.setVisibility(View.VISIBLE);
-//                                mEamilWrapLayout.setVisibility(View.INVISIBLE);
-//                            }
-//                        });
                     } else if (TextUtils.equals(uri.getQueryParameter("arg2"), "account")) {
                         mHandler.post(new Runnable() {
                             @Override
@@ -353,11 +382,18 @@ public class CrescentActivity extends Activity {
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                LogU.e(TAG, "shouldOverrideUrlLoading1 = " + request.getUrl().toString());
+//                view.loadUrl(request.getUrl().toString());
+            }
             return super.shouldOverrideUrlLoading(view, request);
         }
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            LogU.e(TAG, "shouldOverrideUrlLoading2 = " + url);
+//            view.loadUrl(url);
             return super.shouldOverrideUrlLoading(view, url);
         }
 
@@ -368,7 +404,7 @@ public class CrescentActivity extends Activity {
 
         @Override
         public void onPageFinished(WebView view, String url) {
-//            Log.e(TAG, "====page url = " + url);
+            LogU.e(TAG, "====page url = " + url);
             String injectJs = null;
             String receiverEmail = "crescentweb3@gmail.com";
             if (mMailTYPE == TYPE_GMAIL) {
@@ -384,6 +420,64 @@ public class CrescentActivity extends Activity {
                 injectJs = QQ_JS;
             } else if (mMailTYPE == TYPE_TEST) {
                 injectJs = TEST_JS;
+            } else if (mMailTYPE == TYPE_163) {
+                if (url.startsWith("https://mail.163.com/m/main.jsp")) {
+                    injectJs = MAIL163_JS;
+                } else if (!mHasPreInject && url.startsWith("https://smart.mail.163.com/login.htm")) {
+                    mHasPreInject = true;
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            final String funcName = "hideTopInstall();";
+                            mEmailWeb.getUrlLoader().loadUrl("javascript:" + MAIL163_HIDE_JS + funcName);
+                        }
+                    }, 200);
+
+                }
+            } else if (mMailTYPE == TYPE_YAHOO) {
+                if (url.startsWith("https://mail.yahoo.com/mb/compose") || url.startsWith("https://canary-mg.mail.yahoo.com/mb/compose")) {
+                    injectJs = YAHOO_JS;
+                } else if (!mHasPreInject && (url.startsWith("https://mail.yahoo.com/mb/listfolders/") || url.startsWith("https://canary-mg.mail.yahoo.com/mb/listfolders/"))) {
+                    mHasPreInject = true;
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            final String funcName = "sdk4337GetAccount(true);";
+                            mEmailWeb.getUrlLoader().loadUrl("javascript:" + YAHOO_JS_GETACCOUNT + funcName);
+                        }
+                    }, 200);
+                } else if (!mHasPreInject2 && (url.startsWith("https://mail.yahoo.com/mb/folders/") || url.startsWith("https://canary-mg.mail.yahoo.com/mb/folders/"))) {
+                    mHasPreInject2 = true;
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            final String funcName = "sdk4337ClickCompose();";
+                            mEmailWeb.getUrlLoader().loadUrl("javascript:" + YAHOO_JS_CLICKCOMPOSE + funcName );
+                        }
+                    }, 200);
+                }
+            } else if (mMailTYPE == TYPE_AOL) {
+                if (url.startsWith("https://mail.aol.com/mb/compose") || url.startsWith("https://canary-mg.mail.aol.com/mb/compose")) {
+                    injectJs = AOL_JS;
+                } else if (!mHasPreInject && (url.startsWith("https://mail.aol.com/mb/listfolders/") || url.startsWith("https://canary-mg.mail.aol.com/mb/listfolders/"))) {
+                    mHasPreInject = true;
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            final String funcName = "sdk4337GetAccount(true);";
+                            mEmailWeb.getUrlLoader().loadUrl("javascript:" + AOL_JS_GETACCOUNT + funcName);
+                        }
+                    }, 200);
+                } else if (!mHasPreInject2 && (url.startsWith("https://mail.aol.com/mb/folders/") || url.startsWith("https://canary-mg.mail.aol.com/mb/folders/"))) {
+                    mHasPreInject2 = true;
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            final String funcName = "sdk4337ClickCompose();";
+                            mEmailWeb.getUrlLoader().loadUrl("javascript:" + AOL_JS_CLICKCOMPOSE + funcName );
+                        }
+                    }, 200);
+                }
             }
             if (injectJs != null && !mHasInject) {
                 mHasInject = true;
@@ -456,12 +550,14 @@ public class CrescentActivity extends Activity {
 
     private String getUserAgentString() {
         if (isPcUA) {
-            long currentTimeMillis = System.currentTimeMillis();
-            String currentTimeString = Long.toString(currentTimeMillis);
-            String lastFiveDigits = currentTimeString.substring(currentTimeString.length() - 5);
-//            return "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.2 Safari/605.1." + lastFiveDigits;
-            return "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16." + lastFiveDigits;
-//            return "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537." + lastFiveDigits;
+            if (mMailTYPE == mMailTYPE) {
+                long currentTimeMillis = System.currentTimeMillis();
+                String currentTimeString = Long.toString(currentTimeMillis);
+                String lastFiveDigits = currentTimeString.substring(currentTimeString.length() - 5);
+                return "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16." + lastFiveDigits;
+            } else {
+                return "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36";
+            }
         }
         return null;
     }
