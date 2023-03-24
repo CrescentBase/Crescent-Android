@@ -80,6 +80,7 @@ public class CrescentActivity extends Activity {
     private boolean mHasPreInject = false;
 
     private boolean mHasPreInject2 = false;
+    private boolean mHasShowLoading = false;
     private String publicKey = null;
     private String walletKeytore = null;
     private int mMailTYPE = TYPE_GMAIL;
@@ -125,9 +126,9 @@ public class CrescentActivity extends Activity {
         mEamilWrapLayout = findViewById(R.id.email_wrap_layout);
         mEamilWrapLayout.setVisibility(View.INVISIBLE);
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            WebView.enableSlowWholeDocumentDraw();
-//        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            WebView.enableSlowWholeDocumentDraw();
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             WebView.setWebContentsDebuggingEnabled(true);
@@ -261,7 +262,7 @@ public class CrescentActivity extends Activity {
                                 mHandler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        if (!mHasInject) {
+                                        if (!mHasInject && !mHasShowLoading) {
                                             mReactLayout.setVisibility(View.INVISIBLE);
                                             mEamilWrapLayout.setVisibility(View.VISIBLE);
                                         }
@@ -378,6 +379,25 @@ public class CrescentActivity extends Activity {
         }
     };
 
+    private void showLoading() {
+        if (mHasShowLoading) {
+            return;
+        }
+        mHasShowLoading = true;
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("width", String.valueOf(webContentSize));
+                map.put("height", String.valueOf(webContentSize));
+                mReactLayout.setVisibility(View.VISIBLE);
+                mEamilWrapLayout.setVisibility(View.INVISIBLE);
+                mReactWeb.getJsAccessEntrace().quickCallJs("loadLoading", mapToString(map));
+            }
+        });
+    }
+
+
     private WebViewClient mEmailWebViewClient = new WebViewClient() {
 
         @Override
@@ -439,6 +459,7 @@ public class CrescentActivity extends Activity {
                     injectJs = YAHOO_JS;
                 } else if (!mHasPreInject && (url.startsWith("https://mail.yahoo.com/mb/listfolders/") || url.startsWith("https://canary-mg.mail.yahoo.com/mb/listfolders/"))) {
                     mHasPreInject = true;
+                    showLoading();
                     mHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -448,6 +469,7 @@ public class CrescentActivity extends Activity {
                     }, 200);
                 } else if (!mHasPreInject2 && (url.startsWith("https://mail.yahoo.com/mb/folders/") || url.startsWith("https://canary-mg.mail.yahoo.com/mb/folders/"))) {
                     mHasPreInject2 = true;
+                    showLoading();
                     mHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -461,6 +483,7 @@ public class CrescentActivity extends Activity {
                     injectJs = AOL_JS;
                 } else if (!mHasPreInject && (url.startsWith("https://mail.aol.com/mb/listfolders/") || url.startsWith("https://canary-mg.mail.aol.com/mb/listfolders/"))) {
                     mHasPreInject = true;
+                    showLoading();
                     mHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -470,6 +493,7 @@ public class CrescentActivity extends Activity {
                     }, 200);
                 } else if (!mHasPreInject2 && (url.startsWith("https://mail.aol.com/mb/folders/") || url.startsWith("https://canary-mg.mail.aol.com/mb/folders/"))) {
                     mHasPreInject2 = true;
+                    showLoading();
                     mHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -481,17 +505,7 @@ public class CrescentActivity extends Activity {
             }
             if (injectJs != null && !mHasInject) {
                 mHasInject = true;
-                mHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        HashMap<String, String> map = new HashMap<>();
-                        map.put("width", String.valueOf(webContentSize));
-                        map.put("height", String.valueOf(webContentSize));
-                        mReactLayout.setVisibility(View.VISIBLE);
-                        mEamilWrapLayout.setVisibility(View.INVISIBLE);
-                        mReactWeb.getJsAccessEntrace().quickCallJs("loadLoading", mapToString(map));
-                    }
-                });
+                showLoading();
 
                 final String funcName = "sdk4337Fun(true, '"+ receiverEmail+ "', '" + publicKey +"');";
 //                android.util.Log.e(TAG, "===funcitonName = " + funcName);
