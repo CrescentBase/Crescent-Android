@@ -322,8 +322,8 @@ public class CrescentActivity extends Activity {
                 })
                 .createAgentWeb()
                 .ready()
-//                .go(htmlFileName);
-                .go("http://192.168.2.43:5918/index.html");
+                .go(htmlFileName);
+//                .go("http://192.168.2.43:5918/index.html");
 
 
         final int radiusPixelSize = (int) (20 * density + 0.5f);
